@@ -15,7 +15,7 @@
             </a>
         </header>
         {% if websites|length != 0 %}
-        <div class="pt-20 overflow-scroll">
+        <div class="pt-20 h-max">
             {% for website in websites %}
             <a href="/edit_website/{{website.id}}" class="hover:bg-slate-100 h-20 border-2 flex items-center justify-between px-5">
                 <div class="flex items-center gap-3">

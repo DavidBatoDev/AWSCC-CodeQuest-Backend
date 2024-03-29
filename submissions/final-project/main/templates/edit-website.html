@@ -12,7 +12,7 @@
             <h1 class="text-xl text-white">{{website.website if edit else "Add Website"}}</h1>
         </header>
         <div>
-            <form action="/add_website" method="post">
+            <form action="/{{ 'edit_website/%d'|format(website.id) if edit else 'add_website' }}" method="post">
                 <div class="flex flex-col gap-5 p-5">
                     <label class="text-xl" for="website">Website</label>
                     <input value="{{website.website if edit else ''}}" type="text" name="website" id="name" class="border-2 p-2 rounded-md">

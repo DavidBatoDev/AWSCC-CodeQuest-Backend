@@ -834,6 +834,11 @@ video {
   height: 60vh;
 }
 
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .w-screen {
   width: 100vw;
 }
