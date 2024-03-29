@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "syncbrowser": "browser-sync start --proxy 'http://127.0.0.1:5000' --files './main/templates/*.html'",
     "tailwind": "npx tailwindcss -i ./main/static/src/input.css -o ./main/static/css/main.css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
