@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css')}}">
     <title>
         {% block title %}
         {% endblock %}
     </title>
 </head>
-<body>
-    {% block content %}
-    {% endblock %}
+<body class="flex w-screen bg-slate-200 justify-center">
+    <div class="w-screen md:w-[600px] border-5 bg-white">
+        {% block content %}
+        
+        {% endblock %}
+    </div>
 </body>
+    <script src="https://kit.fontawesome.com/b044ec2c0c.js" crossorigin="anonymous"></script>
 </html>

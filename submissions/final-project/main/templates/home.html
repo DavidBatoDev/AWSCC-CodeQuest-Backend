@@ -4,5 +4,47 @@
 {% endblock %}
 
 {% block content %}
-    <h1 class="text-3xl">Hello World</h1>
+    <!-- Header  -->
+    <div class="relative h-screen bg-white">
+        <header class="absolute flex justify-between text-white w-full h-20 bg-blue-600 px-4 items-center">
+            <div id="hamburger" class="flex text-2xl flex-col h-full justify-center ml-3">
+                Password Manager
+            </div>
+            <a href="{{'/' if delete_mode else '?deletemode=true' }}" class="{{'flex' if websites|length != 0 else 'hidden'}} flex-col h-full justify-center ml-3">
+                <i class="fa-solid {{'fa-times' if delete_mode else 'fa-trash'}}"></i>
+            </a>
+        </header>
+        {% if websites|length != 0 %}
+        <div class="pt-20 overflow-scroll">
+            {% for website in websites %}
+            <a href="/edit_website/{{website.id}}" class="hover:bg-slate-100 h-20 border-2 flex items-center justify-between px-5">
+                <div class="flex items-center gap-3">
+                    <div class="flex h-10 w-10 rounded-full items-center justify-center bg-blue-600">
+                        <h1 class="text-white">{{website.website[0:2].upper()}}</h1>
+                    </div>
+                    <h1 class="text-xl">{{website.website}}</h1>
+                </div>
+                <form class="{{'block' if delete_mode else 'hidden'}}" action="/delete_website" method="post">
+                    <input type="hidden" name="website_id" value="{{website.id}}">
+                    <button>
+                        <i class="text-xl text-red-500 fa-solid fa-trash"></i>
+                    </button>
+                </form>
+            </a>
+            {% endfor %}
+            <!-- Add button -->
+            <a href="/add_website" class="absolute bottom-10 right-10 flex justify-center items-center hover:bg-blue-500 bg-blue-600 h-16 w-16 rounded-full">
+                <i class="text-white text-1xl fa-solid fa-plus"></i>
+            </a>
+        </div>
+        {% else %}
+        <div class="pt-0">
+            <div class="flex flex-col items-center justify-center h-screen">
+                <h1 class="text-3xl font-bold text-center">Welcome to the Password Manager!</h1>
+                <p class="mt-4">Get started by adding your first website.</p>
+                <a href="/add_website" class="mt-8 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-500">Add Website</a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 {% endblock %}
